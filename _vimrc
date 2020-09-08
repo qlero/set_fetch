@@ -1,0 +1,66 @@
+" Vim with all enhancements
+source $VIMRUNTIME/vimrc_example.vim
+
+"Personal add-ons
+
+set nobackup
+set noswapfile
+set noundofile
+set termguicolors
+if has("gui_running")
+  if has("gui_gtk2") || has("gui_gtk3")
+    set guifont=Courier\ New\ 13
+  elseif has("gui_photon")
+    set guifont=Courier\ New:s13
+  elseif has("gui_kde")
+    set guifont=Courier\ New/13/-1/5/50/0/0/0/1/0
+  elseif has("x13")
+    set guifont=-*-courier-medium-r-normal-*-*-180-*-*-m-*-*
+  else
+    set guifont=Courier_New:h13:cDEFAULT
+  endif
+endif
+
+" the configuration options should be placed before `colorscheme miramare`
+let g:miramare_enable_italic = 0
+let g:miramare_disable_italic_comment = 0
+colorscheme miramare
+
+" Use the internal diff if available.
+" Otherwise use the special 'diffexpr' for Windows.
+if &diffopt !~# 'internal'
+  set diffexpr=MyDiff()
+endif
+function MyDiff()
+  let opt = '-a --binary '
+  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+  let arg1 = v:fname_in
+  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+  let arg1 = substitute(arg1, '!', '\!', 'g')
+  let arg2 = v:fname_new
+  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+  let arg2 = substitute(arg2, '!', '\!', 'g')
+  let arg3 = v:fname_out
+  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+  let arg3 = substitute(arg3, '!', '\!', 'g')
+  if $VIMRUNTIME =~ ' '
+    if &sh =~ '\<cmd'
+      if empty(&shellxquote)
+        let l:shxq_sav = ''
+        set shellxquote&
+      endif
+      let cmd = '"' . $VIMRUNTIME . '\diff"'
+    else
+      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+    endif
+  else
+    let cmd = $VIMRUNTIME . '\diff'
+  endif
+  let cmd = substitute(cmd, '!', '\!', 'g')
+  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3
+  if exists('l:shxq_sav')
+    let &shellxquote=l:shxq_sav
+  endif
+endfunction
+
