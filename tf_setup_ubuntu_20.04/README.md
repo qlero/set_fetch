@@ -19,41 +19,51 @@ bash NVIDIA-Linux-x86_64-<xxx>.<xx>.run
 
 > ``bash NVIDIA-Linux-x86_64-460.39.run``
 
-3. Download Nvidia CUDA toolkit [here](https://developer.nvidia.com/cuda-toolkit-archive) (for Ubuntu: [here](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=deblocal)):
+3. Download Nvidia CUDA toolkit [here](https://developer.nvidia.com/cuda-toolkit-archive) (for Ubuntu: [here](https://developer.nvidia.com/cuda-downloads?target_os=Linux&target_arch=x86_64&target_distro=Ubuntu&target_version=2004&target_type=runlocal)) and install:
 
 ```sh
 wget https://developer.download.nvidia.com/compute/cuda/11.2.0/local_installers/cuda_<xx>.<x>.<x>_<xxx>.<xx>.<xx>_linux.run
 sudo sh cuda_<xx>.<x>.<x>_<xxx>.<xx>.<xx>_linux.run
 ```
 
-4. Update PATH
+4. Update PATH:
 
-``sh
-PATH=$PATH:/usr/local/cuda-<xx>.<x>/bin
-``
+```sh
+echo 'PATH=$PATH:/usr/local/cuda-<xx>.<x>/bin' >> ~/.bashrc
+```
 
-5. Update LD\_LIBRARY\_PATH via .bashrc
+5. Download cudnn [here](https://developer.nvidia.com/rdp/cudnn-download) and install:
 
-``sh
+```sh
+wget https://developer.nvidia.com/compute/machine-learning/cudnn/secure/<x>.<x>.<x>.<xx>/<xx>.<x>_<xxxxxxxx>/cudnn-<xx>.<x>-linux-x64-v<x>.<x>.<x>.<xx>.tgz
+tar -xvzf https://developer.nvidia.com/compute/machine-learning/cudnn/secure/<x>.<x>.<x>.<xx>/<xx>.<x>_<xxxxxxxx>/cudnn-<xx>.<x>-linux-x64-v<x>.<x>.<x>.<xx>.tgz
+sudo cp cuda/include/cudnn*.h /usr/local/cuda/include
+sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
+sudo chmod a+r /usr/local/cuda/include/cudnn*.h /usr/local/cuda/lib64/libcudnn*
+```
+
+6. Update LD\_LIBRARY\_PATH via .bashrc:
+
+```sh
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH' >> ~/.bashrc
 echo 'export LD_LIBRARY_PATH=/usr/local/cuda/include:$LD_LIBRARY_PATH' >> ~/.bashrc
 source ~/.bashrc
-``
+```
 
-6. Install the nvidia cuda toolkit
+7. Install the nvidia cuda toolkit
 
 ```sh
 sudo apt install nvidia-cuda-toolkit
 ```
 
-7. Install and run modprobe (helps debugging, thanks to [1Mr-Styler](https://github.com/tensorflow/tensorflow/issues/19266#issuecomment-399686258)):
+8. Install and run modprobe (helps debugging, thanks to [1Mr-Styler](https://github.com/tensorflow/tensorflow/issues/19266#issuecomment-399686258)):
 
 ```sh
 sudo apt install nvidia-modprobe
 nvidia-modprobe
 ```
 
-8. Setting Python:
+9. Setting Python:
 
 ```sh
 pip install tensorflow
