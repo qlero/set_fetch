@@ -12,10 +12,13 @@ def event_function():
 
 def main():
     while True:
+        counter = 0
         time.sleep(1)
-        a = np.random.randint(1,100,(10000,10000))
-        b = np.random.randint(1,100,(10000,10000))
+        a = np.random.randint(1,100,(100,100))
+        b = np.random.randint(1,100,(100,100))
         c = a @ b
+        counter += 1
+        if counter == 1: break
 
 context = daemon.DaemonContext(
         working_directory = "/home/quentin/Programming/set_fetch/daemon_test"
@@ -30,3 +33,4 @@ if __name__ == "__main__":
         event.set()
         with context:
             main()
+        context.close()
