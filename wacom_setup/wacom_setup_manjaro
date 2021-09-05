@@ -1,0 +1,29 @@
+#!/bin/bash
+
+primary_display="$(echo head -n 1 | xrandr | grep 'primary' | awk '{ print $1 }')"
+wacom_ids="$(xinput | grep Wacom | grep -oP '(?<=id=).*' | cut -c 1-2)" # in case use pointer instead of Wacom
+wacom_names="$(xinput | grep Wacom | grep -oP '(?<=Wacom).*' | cut -c 1-26)"
+
+echo "WACOM IDs to remap to $primary_display:"
+echo $wacom_ids
+
+for id in $wacom_ids
+do
+	xinput map-to-output $id $primary_display
+	echo "INPUT $id REMAPPED TO $primary_display"
+done
+
+echo "$wacom_names" | while read line ; do
+	xsetwacom set "Wacom $line" Rotate half
+	echo "DEVICE Wacom $line INPUT ROTATED BY 180'"
+done
+
+
+# add in /etc/X11/xorg.conf.d
+# https://unix.stackexchange.com/questions/65788/why-doesnt-xsetwacom-work-from-udev#65793
+# 
+#Section "InputClass"
+#       Identifier "Wacom Left Handed"
+#       MatchDriver "wacom"
+#       Option "Rotate" "half"
+#EndSection
