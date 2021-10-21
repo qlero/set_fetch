@@ -1,0 +1,8 @@
+# slack installation
+
+sudo ln -s /var/lib/snapd/snap /snap
+sudo snap install slack --classic
+
+# mozilla password imports
+
+signon.management.page.fileImport.enabled -> True

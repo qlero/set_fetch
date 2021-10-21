@@ -14,8 +14,3 @@ LATEST_ANACONDA=$(wget -O - https://www.anaconda.com/distribution/ 2>/dev/null |
 wget $LATEST_ANACONDA
 chmod +x Anaconda3*.sh # make it executable
 ./Anaconda3*.sh # execute the installer
-conda install -c conda-forge notebook
-conda install -c conda-forge nb_conda_kernels
-conda install -c conda-forge jupyter_contrib_nbextensions
-conda install pip
-conda create -n ML_base tensorflow-gpu pip ipykernel gudhi matplotlib seaborn scipy numpy dask pytorch
