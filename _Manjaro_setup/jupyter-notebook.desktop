@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Jupyter-Notebook
+Version=2.0
+Type=Application
+Exec=/home/quentin/anaconda3/bin/jupyter-notebook
+Icon=/home/quentin/anaconda3/lib/python3.8/site-packages/anaconda_navigator/static/images/jupyter-icon-1024x1024.png
+Comment=Open Jupyter Notebook
+Terminal=false
