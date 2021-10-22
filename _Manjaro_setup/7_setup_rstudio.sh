@@ -21,7 +21,7 @@ yaourt -S rstudio-desktop-bin
 #JupyterNotebook — Jupyter Notebook
 #Steps:
 #Install R. Use the R terminal (do not use R studio) to install R packages:
-#  install.packages(c(‘repr’, ‘IRdisplay’, ‘evaluate’, ‘crayon’, ‘pbdZMQ’, ‘devtools’, ‘uuid’, ‘digest’))
+#  install.packages(c("repr", "IRdisplay", "evaluate", "crayon", "pbdZMQ",  "devtools", "uuid", "digest"))
 #  install.packages(‘IRkernel’)
 #Make Kernel available to Jupyter
 #  IRkernel::installspec()
