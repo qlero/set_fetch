@@ -2,6 +2,7 @@
 
 sudo pacman -Syyu 
 sudo pacman -S --needed base-devel git wget yajl # select default all)
+sudo pacman -Syu gcc-fortran
 cd /tmp 
 git clone https://aur.archlinux.org/package-query.git
 cd package-query
