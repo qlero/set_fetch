@@ -1,5 +1,9 @@
 #!/bin/bash/
 
+#
+# Script to setup the miramare skin over Vim 
+#
+
 sudo pacman -Syyu 
 sudo pacman -Syu vim
 sudo cp ../miramare_vim/_vimrc ~/.vimrc
