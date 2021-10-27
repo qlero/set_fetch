@@ -1,15 +1,18 @@
 Series of scripts to set up my rigs.
 
-1. DroidCam script to use phone as webcam
+### Content
 
-2. Set up miramare.vim coloscheme for VIM (Windows/Linux)
+- **Manjaro setup**: scripts to set vim, nvidia/cuda/cudnn, python/conda, haskell, etc.
 
-3. Install CUDA on Linux Manjaro
+- **DroidCam**: Script to use an android phone as a webcam
 
-4. Python tests: daemon, numba
+- **Vim**: setup of the Vim text editor with the miramare skin
 
-5. setup tensorflow ubuntu 20.04
+- **CUDA/CUDNN Manjaro/Arch**: stand-alone setup to install CUDA/Cudnn on a Manjaro distro
 
-6. setup Wacom Tablet on Manjaro Desktop
+- **Python tests**: various test script in PYthon: daemon, numba
 
-7. setup new install of Manjaro
+- **Tensorflow on Ubuntu**: Setup script for tensorflow on ubuntu 20.04
+
+- **Wacom tablet**: Setup script for a Wacom Tablet (tested on Manjaro)
+
