@@ -35,4 +35,5 @@ conda deactivate
 
 # STEP 4: JN DESKTOP ICON SETUP
 
+unzip setup_files.zip -d .
 cp jupyter-notebook.desktop ~/.local/share/applications
