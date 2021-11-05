@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo pacman -Syyu rlwrap
+sudo pacman -Syyu rlwrap cmake ffmpeg
