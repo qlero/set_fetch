@@ -7,3 +7,5 @@
 sudo pacman -Syyu 
 sudo mhwd -a pci nonfree 0300
 sudo reboot # requires a reboot
+
+# sudo pacman -S nvidia nvidia-utils cuda cudnn
