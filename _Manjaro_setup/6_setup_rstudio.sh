@@ -14,6 +14,9 @@ sudo pacman -S --needed base-devel git wget yajl # select default all)
 sudo pacman -Syu gcc-fortran # necessary for R compilation steps
 
 # STEP 2: retrieve packages to install yaourt (package repo with RS)
+
+### IF YOU HAVE YAY SKIP TO NEXT STEP
+
 cd ~/Downloads
 git clone https://aur.archlinux.org/package-query.git
 cd ~/Downloads/package-query
