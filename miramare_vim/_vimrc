@@ -1,9 +1,6 @@
 " Vim with all enhancements
 source $VIMRUNTIME/vimrc_example.vim
 
-# set spaces as tabs
-set ts=4 sw=4
-
 "Personal add-ons
 
 set nobackup
