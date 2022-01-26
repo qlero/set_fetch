@@ -16,24 +16,25 @@ sudo pacman -Syyu
 cd ~/Downloads
 LATEST_ANACONDA=$(wget -O - https://www.anaconda.com/distribution/ 2>/dev/null | sed -ne 's@.*\(https:\/\/repo\.anaconda\.com\/archive\/Anaconda3-.*-Linux-x86_64\.sh\)\">64-Bit (x86) Installer.*@\1@p')
 wget $LATEST_ANACONDA
-chmod +x Anaconda3*.sh # make it executable
-./Anaconda3*.sh # execute the installerA
+chmod +x Anaconda3*.sh
+./Anaconda3*.sh
 
 # STEP 2: JUPYTER NOTEBOOK SETUP
 
 conda install pip
-conda install -c conda-forge notebook
-conda install -c conda-forge nb_conda_kernels
-conda install -c conda-forge jupyter_contrib_nbextensions
+conda install -c conda-forge notebook nb_conda_kernels jupyter_contrib_nbextensions
 
 # STEP 3: FIRST CONDA ENV SETUP
 
-conda create -n ML_base tensorflow-gpu ipykernel matplotlib seaborn scipy numpy dask pytorch
+conda create -n ML_base tensorflow-gpu ipykernel matplotlib seaborn scipy numpy dask pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
 conda activate ML_base
 conda install -c conda-forge gudhi # gudhi is not available in conda-forge
+python
+import torch
+print(torch.cuda.is_available())
+print(torch.version.cuda)
+print(torch.cuda.device_count())
+print(torch.cuda.get_device_properties("cuda:0"))
+print(torch.cuda.get_device_name("cuda:0"))
+exit()
 conda deactivate
-
-# STEP 4: JN DESKTOP ICON SETUP
-
-unzip setup_files.zip -d .
-cp jupyter-notebook.desktop ~/.local/share/applications
