@@ -26,7 +26,7 @@ conda install -c conda-forge notebook nb_conda_kernels jupyter_contrib_nbextensi
 
 # STEP 3: FIRST CONDA ENV SETUP
 
-conda create -n ML_base tensorflow-gpu ipykernel matplotlib seaborn scipy numpy dask pytorch torchvision torchaudio cudatoolkit=11.3 -c pytorch
+conda create -n ML_base tensorflow-gpu ipykernel matplotlib seaborn scipy numpy dask pytorch torchvision cudatoolkit=11.3
 conda activate ML_base
 conda install -c conda-forge gudhi # gudhi is not available in conda-forge
 python
