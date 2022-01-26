@@ -1,4 +1,4 @@
-Series of scripts to set up my rigs.
+Series of scripts to set up my computers.
 
 ### Content
 
